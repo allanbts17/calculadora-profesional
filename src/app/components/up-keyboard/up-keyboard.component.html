@@ -1,0 +1,17 @@
+<div class="flex flex-row h-40 w-full">
+  <div class="flex flex-wrap side" style:width="30vw">
+    <button *ngFor="let button of left_buttons"
+      (touchend)="released(button)"
+      (touchstart)="pressed(button)"
+      [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 side-button">{{button.symbol}}
+    </button>
+  </div>
+  <div class="bg-blue-400 center" style:width="40vw"></div>
+  <div class="flex flex-wrap side bg-blue-800" style:width="30vw">
+    <button *ngFor="let button of right_buttons"
+      (touchend)="released(button)"
+      (touchstart)="pressed(button)"
+      [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 side-button">{{button.symbol}}
+    </button>
+  </div>
+</div>

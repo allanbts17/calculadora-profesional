@@ -4,12 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'calculus',
     pathMatch: 'full'
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./pages/folder/folder.module').then( m => m.FolderPageModule)
+  },
+  {
+    path: 'calculus',
+    loadChildren: () => import('./pages/calculus/calculus.module').then( m => m.CalculusPageModule)
+  },
+  {
+    path: 'graphics',
+    loadChildren: () => import('./pages/graphics/graphics.module').then( m => m.GraphicsPageModule)
   }
 ];
 

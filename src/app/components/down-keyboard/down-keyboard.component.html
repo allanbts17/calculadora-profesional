@@ -1,0 +1,4 @@
+<div class="flex flex-wrap w-full">
+  <button *ngFor="let button of buttons" (touchend)="released(button)" (touchstart)="pressed(button)" [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10">{{button.symbol}}</button>
+</div>
+<!--w-20 y w-10-->
