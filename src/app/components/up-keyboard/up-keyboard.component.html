@@ -3,15 +3,87 @@
     <button *ngFor="let button of left_buttons"
       (touchend)="released(button)"
       (touchstart)="pressed(button)"
-      [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 side-button">{{button.symbol}}
+      [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 left-side-button">{{button.symbol}}
+      <svg *ngIf="button.svg=='svg1'" transform="scale(0.6)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 242.42 180.39">
+        <defs>
+          <style>.cls-1{fill:none;stroke:#FFFF;stroke-miterlimit:10;stroke-width:8px;}</style>
+        </defs>
+          <path stroke="#FFFF" fill="#FFFF" d="M113.39,0,236.5.05c1.53,0,3.07.08,4.61.12,2.76,6.72,1.31,9.05-5.65,9q-66.77,0-133.52-.09c-3.79,0-5.25,1.17-6.15,5-2.44,10.33-5.72,20.46-8.27,30.76-2,7.87-5,15.37-7.09,23.2C77.7,78.41,75,88.79,72.16,99.15c-3.42,12.63-6.94,25.23-10.38,37.86-3.62,13.31-7.26,26.61-10.72,40-.72,2.74-2,3.41-4.72,3.41-3,0-3.51-2.15-4.37-3.92-9.09-18.74-17-38.05-27-56.37-1.43-2.62-2.59-2.89-4.91-1.66-2,1-4.06,1.91-6.12,2.79-1.81.78-3-.16-3.7-1.7-.79-1.7.2-2.63,1.68-3.27,6.28-2.72,12.56-5.42,18.8-8.2,1.6-.71,2.59-.6,3.37,1.14q8.45,18.9,17,37.74c1.7,3.76,3.35,7.54,5.08,11.29.33.72.73,1.62,1.76,1.45a1.4,1.4,0,0,0,.88-1c.94-5.81,3.86-11.17,3.87-17.18.29-1.14.59-2.27.89-3.41A13.85,13.85,0,0,0,56,130.06l.21-1.22a93.63,93.63,0,0,0,5.47-20.07l.18-1.22c1-.65,1.17-1.76,1.44-2.75,2-7.28,3.8-14.6,5.85-21.86,5.16-18.22,9-36.79,15.24-54.74,2.69-7.78,4.45-15.9,6.31-23.94.69-3,1.94-4.13,5-4.07C101.59.31,107.49.08,113.39,0Z"/>
+          <rect class="cls-1" x="106.14" y="41.11" width="126" height="126" rx="17.34"/>
+      </svg>
+      <svg  *ngIf="button.svg=='svg2'" transform="scale(0.6)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181.7 174.92">
+        <defs>
+          <style>.cls-1,.cls-2{fill:none;stroke:#FFFF;stroke-miterlimit:10;}.cls-1{stroke-width:4.9px;}.cls-2{stroke-linecap:round;stroke-width:5.2px;}</style>
+        </defs>
+        <g id="Capa_2" data-name="Capa 2">
+          <g id="Capa_1_copia" data-name="Capa 1 copia">
+            <rect class="cls-1" x="105.35" y="5.46" width="74" height="74" rx="10.18"/>
+            <rect class="cls-1" x="2.35" y="92.46" width="74" height="74" rx="10.18"/>
+            <line class="cls-2" x1="171.35" y1="172.46" x2="15.35" y2="2.46"/>
+          </g>
+        </g>
+      </svg>
     </button>
   </div>
-  <div class="bg-blue-400 center" style:width="40vw"></div>
-  <div class="flex flex-wrap side bg-blue-800" style:width="30vw">
+  <!-- Center -->
+  <div class="bg-red-400 center relative" style:width="40vw">
+    <div class="h-full w-full flex justify-between">
+      <button class="w-16" (touchend)="arrow_released('back')" (touchstart)="arrow_pressed('back')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+          <title>Caret Back Circle</title>
+          <path [attr.fill-opacity]="arrows_pressed.back" d="M48 256c0 114.87 93.13 208 208 208s208-93.13 208-208S370.87 48 256 48 48 141.13 48 256zm252-74.14v148.28a16 16 0 01-26.23 12.29l-89.09-74.13a16 16 0 010-24.6l89.09-74.13A16 16 0 01300 181.86z"/>
+        </svg>
+      </button>
+
+      <button class="w-16" (touchend)="arrow_released('forward')" (touchstart)="arrow_pressed('forward')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+          <title>Caret Forward Circle</title>
+          <path [attr.fill-opacity]="arrows_pressed.forward" d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-252 74.14V181.86a16 16 0 0126.23-12.29l89.09 74.13a16 16 0 010 24.6l-89.09 74.13A16 16 0 01212 330.14z"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="absolute top-0 center flex flex-col  h-40">
+      <div class="w-full flex justify-center">
+        <button class="w-16" (touchend)="arrow_released('up')" (touchstart)="arrow_pressed('up')">
+          <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+            <title>Caret Up Circle</title>
+            <path [attr.fill-opacity]="arrows_pressed.up" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48zm74.14 252H181.86a16 16 0 01-12.29-26.23l74.13-89.09a16 16 0 0124.6 0l74.13 89.09A16 16 0 01330.14 300z"/>
+          </svg>
+        </button>
+      </div>
+
+
+      <div class="w-full flex-1"></div>
+
+      <div class="w-full flex justify-center">
+        <button class="w-16" (touchend)="arrow_released('down')" (touchstart)="arrow_pressed('down')">
+          <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+            <title>Caret Down Circle</title>
+            <path [attr.fill-opacity]="arrows_pressed.down" d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-121.57-17.77l-74.13 89.09a16 16 0 01-24.6 0l-74.13-89.09A16 16 0 01181.86 212h148.28a16 16 0 0112.29 26.23z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-wrap side" style:width="30vw">
     <button *ngFor="let button of right_buttons"
       (touchend)="released(button)"
       (touchstart)="pressed(button)"
-      [ngClass]="{'large-key-button': button.symbol=='\u2334', 'key-buttons': button.symbol!='\u2334','bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 side-button">{{button.symbol}}
+      [ngClass]="{'bg-blue-800':!button.pressed,'bg-blue-400':button.pressed}" class=" text-white text-bold h-10 right-side-button">{{button.symbol}}
+      <svg *ngIf="button.svg=='svg3'" transform="scale(0.4)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161.2 162.2">
+        <defs>
+          <style>.cls-1{fill:none;stroke:#FFFF;stroke-miterlimit:10;stroke-width:4.7px;}</style>
+        </defs>
+        <g id="Capa_2" data-name="Capa 2">
+          <g id="Capa_1_copia_2" data-name="Capa 1 copia 2">
+            <rect class="cls-1" x="84.85" y="2.85" width="74" height="74" rx="10.18"/>
+            <rect class="cls-1" x="84.85" y="85.85" width="74" height="74" rx="10.18"/>
+            <rect class="cls-1" x="2.35" y="2.35" width="74" height="74" rx="10.18"/>
+            <rect class="cls-1" x="2.35" y="85.35" width="74" height="74" rx="10.18"/>
+          </g>
+        </g>
+      </svg>
     </button>
   </div>
 </div>
